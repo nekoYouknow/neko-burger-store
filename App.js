@@ -2,11 +2,13 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import Onboarding from "./screens/onboarding";
+import Home from "./screens/home";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Onboarding />
+      {/* <Onboarding /> */}
+      <Home />
     </View>
   );
 }
