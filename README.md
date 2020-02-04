@@ -10,7 +10,7 @@
 - yarn add react-navigation-stack react-navigation-tabs
 - yarn add @react-native-community/masked-view
 
-## Design Licensed by
+## Design Licensed
 
 - https://project365.design/
 
