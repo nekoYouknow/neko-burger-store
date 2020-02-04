@@ -48,7 +48,7 @@ const TopCarousel = ({ list }) => {
   );
 };
 
-const LoginSignup = () => {
+const LoginSignup = ({ navigation }) => {
   return (
     <View style={{ alignItems: "center" }}>
       <TouchableOpacity
@@ -103,7 +103,7 @@ const LoginSignup = () => {
         }}
       >
         <Text style={{ color: "gray" }}>Existing User? </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
           <Text style={{ color: "#c23616" }}>Login now</Text>
         </TouchableOpacity>
       </View>
@@ -111,7 +111,7 @@ const LoginSignup = () => {
   );
 };
 
-export default function Onboarding() {
+export default function Onboarding(props) {
   const [list, setList] = useState([
     {
       id: 1,
@@ -132,7 +132,7 @@ export default function Onboarding() {
   return (
     <View style={styles.container}>
       <TopCarousel list={list} />
-      <LoginSignup />
+      <LoginSignup {...props} />
     </View>
   );
 }
@@ -140,7 +140,8 @@ export default function Onboarding() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    marginTop: 24
   },
   thumb: {
     width: 240,

@@ -8,7 +8,7 @@ import {
   ScrollView,
   Dimensions
 } from "react-native";
-import { Entypo, FontAwesome, Ionicons } from "@expo/vector-icons";
+import { Entypo, Ionicons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
 
@@ -51,7 +51,7 @@ const Header = () => {
   );
 };
 
-const Recommended = () => {
+const Recommended = ({ navigation }) => {
   return (
     <View style={styles.panel}>
       {/* title */}
@@ -71,10 +71,12 @@ const Recommended = () => {
       {/* card */}
       <View style={styles.card}>
         <View style={{ marginHorizontal: 20 }}>
-          <Image
-            source={require("../../assets/02-Home/01.png")}
-            style={styles.cardImage}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("Pizza")}>
+            <Image
+              source={require("../../assets/02-Home/01.png")}
+              style={styles.cardImage}
+            />
+          </TouchableOpacity>
           <Text style={{ paddingVertical: 5, fontSize: 15 }}>
             Veggie Cheese Extravaganze
           </Text>
@@ -143,7 +145,7 @@ const Recommended = () => {
   );
 };
 
-const Menu = () => {
+const Menu = ({ navigation }) => {
   return (
     <View style={styles.panel}>
       {/* title */}
@@ -155,7 +157,7 @@ const Menu = () => {
         </View>
 
         {/* right */}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Menu")}>
           <Text style={{ color: "red" }}>View All</Text>
         </TouchableOpacity>
       </View>
@@ -195,13 +197,13 @@ const Menu = () => {
   );
 };
 
-export default function Home({ props }) {
+export default function Home(props) {
   return (
     <View style={styles.container}>
       <Header />
       <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
-        <Recommended />
-        <Menu />
+        <Recommended {...props} />
+        <Menu {...props} />
       </ScrollView>
     </View>
   );
@@ -210,6 +212,7 @@ export default function Home({ props }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 24,
     paddingHorizontal: 24,
     backgroundColor: "#f5f6fa"
   },
